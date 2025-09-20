@@ -16,7 +16,7 @@ const Navbar = () => {
           target="_blank" 
           rel="noopener noreferrer"
         >
-          <img src="public/images/images.png" alt="KJEI Logo" className="brand-logo" />
+          <img src="images/images.png" alt="KJEI Logo" className="brand-logo" />
           KJEI
         </a>
 
