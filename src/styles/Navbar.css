@@ -45,7 +45,7 @@
   font-size: 2.4rem;
   color: #fff;
   text-transform: uppercase;
-  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: 4px;
   text-shadow: 0 0 10px rgba(255,255,255,0.6), 2px 2px 4px rgba(0,0,0,0.8);
   transition: all 0.4s ease;
@@ -95,4 +95,59 @@
   }
 }
 
- 
+/* Base navbar */
+.navbar {
+  background: #000 !important; /* solid black */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.5rem 1rem;
+}
+
+/* Brand */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif; /* professional */
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: #fff !important;
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding-left: 12px; /* space from edge */
+}
+
+.navbar-brand .brand-logo {
+  height: 60px;       /* increase from 40px (default) */
+  width: auto;        /* keep proportions */
+  margin-right: 12px;
+}
+
+.nav-link {
+  position: relative;
+  color: #fff !important; /* white */
+  padding: 8px 14px !important;
+  border-radius: 0 !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.nav-link:hover {
+  color: #E63946 !important; /* sporty red */
+}
+
+/* Active link (underline + gold color) */
+.active-link {
+  color: #FFB703 !important; /* gold */
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #FFB703; /* underline */
+}

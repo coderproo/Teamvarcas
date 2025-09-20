@@ -2,12 +2,10 @@ import React from "react";
 import "../styles/Sponsor.css";
 
 const sponsors = [
-  { id: 1, name: "Bosch", logo: "/images/Sponsor1.jpg" },
-  { id: 2, name: "Tata Motors", logo: "/images/Sponsor2.jpg" },
-  { id: 3, name: "Mahindra", logo: "/images/Sponsor3.jpg" },
-  { id: 4, name: "Siemens", logo: "/images/Sponsor4.jpg" },
-  { id: 5, name: "Reliance", logo: "/images/Sponsor5.jpg" },
-  // Add more logos here
+  { id: 1, name: "Solidworks", logo: "/images/solidworks.png", url: "https://www.solidworks.com/" },
+  { id: 2, name: "Altium", logo: "/images/altium.jpg", url: "https://www.altium.com/" },
+  { id: 3, name: "Eraser", logo: "/images/Eraser.png", url: "https://eraser.io/" },
+  { id: 4, name: "Altair", logo: "/images/altair.jpg", url: "https://altair.com/" },
 ];
 
 const Sponsor = () => {
@@ -22,21 +20,36 @@ const Sponsor = () => {
           <div className="sponsor-logos">
             {sponsors.map((sponsor) => (
               <div className="sponsor-logo-card" key={sponsor.id}>
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="sponsor-logo"
-                />
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${sponsor.name}`}
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="sponsor-logo"
+                  />
+                </a>
               </div>
             ))}
+
             {/* duplicate logos for infinite scroll */}
             {sponsors.map((sponsor) => (
               <div className="sponsor-logo-card" key={`dup-${sponsor.id}`}>
-                <img
-                  src={sponsor.logo}
-                  alt={sponsor.name}
-                  className="sponsor-logo"
-                />
+                <a
+                  href={sponsor.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit ${sponsor.name}`}
+                >
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    className="sponsor-logo"
+                  />
+                </a>
               </div>
             ))}
           </div>

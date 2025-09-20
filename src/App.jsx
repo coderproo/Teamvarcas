@@ -20,17 +20,21 @@ function App() {
         <Navbar />
         <main>
           <Routes>
-            <Route path="/" element={
-              <>
-                <Hero />
-                <About />
-                <Gallery />
-                <Team />
-                <Contact />
-              </>
-            } />
+            {/* Homepage: only Hero + About */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero />
+                  <About />
+                </>
+              }
+            />
+
+            {/* Other sections as individual pages */}
             <Route path="/about" element={<About />} />
             <Route path="/sponsor" element={<Sponsor />} />
+            {/* If you don’t want gallery at all, remove this route */}
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/team" element={<Team />} />
             <Route path="/contact" element={<Contact />} />

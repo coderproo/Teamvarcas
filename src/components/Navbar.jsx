@@ -8,7 +8,18 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg scrolled">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">Varcas</Link>
+
+        {/* Brand Logo + External Link */}
+        <a 
+          className="navbar-brand" 
+          href="https://www.kjei.edu.in/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <img src="public/images/images.png" alt="KJEI Logo" className="brand-logo" />
+          KJEI
+        </a>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -22,10 +33,11 @@ const Navbar = () => {
             <i className="fas fa-bars"></i>
           </span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            {["/", "/about", "/sponsor", "/gallery", "/team", "/contact"].map((path, i) => {
-              const names = ["Home", "About", "Sponsor", "Gallery", "Team", "Contact"];
+            {["/", "/about", "/sponsor", "/team", "/contact"].map((path, i) => {
+              const names = ["Home", "About", "Sponsor", "Team", "Contact"];
               return (
                 <li className="nav-item" key={path}>
                   <Link

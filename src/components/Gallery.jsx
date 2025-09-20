@@ -1,45 +1,74 @@
-import React from 'react';
-import '../styles/Gallery.css';
+import React, { useRef, useEffect, useState } from "react";
+import "../styles/Gallery.css";
 
 const Gallery = () => {
-  // Placeholder for car images
-  // To add your own images, place them in the /public/images directory
-  // and update the src attribute with the correct path
-  // Example: { id: 1, src: '/images/your-car-image.jpg', alt: 'Your Car Name' }
-  const carImages = [
-    { id: 1, src: '/images/car1.png', alt: 'Vishwaracers Baja Car 1' },
-    { id: 2, src: '/images/car2.png', alt: 'Vishwaracers Baja Car 2' },
-    { id: 3, src: '/images/car3.png', alt: 'Vishwaracers Baja Car 3' },
-    { id: 4, src: '/images/car4.png', alt: 'Vishwaracers Baja Car 4' },
-    { id: 5, src: '/images/car5.png', alt: 'Vishwaracers Baja Car 5' },
-    { id: 6, src: '/images/car6.png', alt: 'Vishwaracers Baja Car 6' },
-  ];
+  const photoRef = useRef(null);
+  const textRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  // Intersection observer to trigger animations when section scrolls into view
+  useEffect(() => {
+    const photoEl = photoRef.current;
+    const textEl = textRef.current;
+    if (!photoEl || !textEl) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(photoEl); // watch photo (the section)
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="gallery-section">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12">
-            <h2 className="section-title">Our Baja Collection</h2>
+    <main className="gallery-section">
+      <div className="gallery-inner">
+        <header className="gallery-hero">
+          <h1 className="gallery-title">Meet the Team</h1>
+          <p className="gallery-sub">The spirit behind Team Varcas</p>
+        </header>
+
+        <section className="team-showcase" aria-labelledby="team-heading">
+          <div
+            ref={photoRef}
+            className={`team-photo-wrap ${visible ? "in-view" : ""}`}
+            aria-hidden={!visible}
+          >
+            <img
+              src="/images/team-photos.jpg"
+              alt="Team Varcas group photo"
+              className="team-photo"
+            />
           </div>
-        </div>
-        <div className="row">
-          {carImages.map((car) => (
-            <div className="col-md-4 col-sm-6 mb-4" key={car.id}>
-              <div className="card-wrapper">
-                <div className="card">
-                  <img src={car.src} className="card-img" alt={car.alt} />
-                  <div className="card-body">
-                    <h5 className="card-title">Baja Car Model {car.id}</h5>
-                    <p className="card-text">Experience the thrill of off-road racing with our Baja vehicles.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+
+          <div
+            ref={textRef}
+            className={`team-text-wrap ${visible ? "in-view" : ""}`}
+          >
+            <h2 id="team-heading" className="team-motto">
+              ENGINEERED TO PERFORM, DRIVEN TO EXCEL.
+            </h2>
+            <p className="team-paragraph">
+              Team Varcas is built on hands-on learning and collaborative grit.
+              We tackle design problems together, iterate quickly, and prioritize
+              safe, practical engineering — growing as makers and as a team
+              every week in the workshop.
+            </p>
+          </div>
+        </section>
+
+        {/* Optional: keep additional gallery content (cards) below if you want.
+            For now it's omitted to keep focus on team + story. */}
       </div>
-    </div>
+    </main>
   );
 };
 

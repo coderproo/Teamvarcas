@@ -1,208 +1,130 @@
-/* ================= General About Section ================= */
+:root {
+  --bg-dark: #0b0f14;
+  --bg-gradient: #0f1724;
+  --muted-text: #dbe7ee;
+  --highlight: #FFB703;
+}
+
+/* Section container */
 .about-section {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  color: #fff;
-  padding: 80px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 90vh;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-container {
-  max-width: 1200px;
   width: 100%;
-  z-index: 2;
-}
-
-.about-title {
-  font-family: "Montserrat", sans-serif;
-  font-size: 2rem;
-  font-weight: 300;
-  line-height: 1.6;
-  margin-bottom: 30px;
-  color: #f8fafc;
-  animation: fadeDown 1.2s ease-in-out;
-}
-
-/* ================= Content Box ================= */
-.about-content {
-  margin-top: 20px;
-  padding: 25px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-  animation: fadeUp 1.5s ease-in-out;
-}
-
-.about-content p {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 15px;
-  color: #e2e8f0;
-}
-
-/* ================= Features Section ================= */
-.about-features {
+  padding: 80px 20px;
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-gradient) 100%);
+  color: var(--muted-text);
   display: flex;
-  gap: 25px;
-  margin-top: 50px;
-  width: max-content;
-  animation: scrollCards 25s linear infinite;
-}
-
-/* ================= Feature Cards ================= */
-.feature-card {
-  flex: 0 0 250px;
-  background: rgba(255, 255, 255, 0.08);
-  padding: 30px 20px;
-  border-radius: 12px;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
 }
 
+/* Text Block */
+.about-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 40px auto;
+}
+
+/* Quote */
+.about-quote {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  color: #f8fafc;
+  margin-bottom: 28px;
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+/* Paragraphs */
+.about-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: var(--muted-text);
+}
+
+.about-content strong {
+  color: var(--highlight);
+}
+
+/* Centered features grid */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  justify-content: center;
+  justify-items: center;
+  align-items: start;
+  width: min(1100px, 100%);
+  margin: 0 auto 40px auto;
+  padding: 10px 12px 50px;
+  box-sizing: border-box;
+}
+
+/* Feature card */
+.feature-card {
+  width: 100%;
+  max-width: 320px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 24px 18px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  overflow: visible;
+}
+
+/* Hover: lift without overlapping issues */
 .feature-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.55);
+  z-index: 20;
 }
 
-/* ================= Inside Card ================= */
+/* Icon and text */
 .feature-icon {
-  font-size: 2.5rem;
-  color: #2dd4bf; /* Teal color similar to the advertisement icons */
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-}
-
-.feature-card:hover .feature-icon {
-  transform: scale(1.2);
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: var(--highlight);
 }
 
 .feature-card h3 {
-  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
   margin-bottom: 10px;
-  color: #f1f5f9;
 }
 
 .feature-card p {
-  font-size: 1rem;
-  color: #cbd5e1;
+  font-size: 0.95rem;
+  color: var(--muted-text);
+  line-height: 1.5;
+  margin: 0;
 }
 
-/* ================= Animations ================= */
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Mobile */
+@media (max-width: 900px) {
+  .about-section { padding: 60px 16px; }
+  .about-content { margin-bottom: 36px; }
+  .feature-card { padding: 22px 16px; max-width: 420px; }
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+@media (max-width: 520px) {
+  .about-quote { font-size: 1.25rem; }
+  .features { gap: 18px; }
+  .feature-card { padding: 18px 14px; max-width: 100%; }
 }
 
-@keyframes scrollCards {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-/* ================= Responsive ================= */
-@media screen and (max-width: 1024px) {
-  .about-section {
-    padding: 60px 15px;
-  }
-
-  .about-title {
-    font-size: 1.8rem;
-  }
-
-  .feature-card {
-    flex: 0 0 220px;
-    padding: 25px 15px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .about-section {
-    padding: 50px 10px;
-  }
-
-  .about-title {
-    font-size: 1.6rem;
-    margin-bottom: 25px;
-  }
-
-  .about-content {
-    padding: 20px;
-  }
-
-  .about-content p {
-    font-size: 1rem;
-  }
-
-  .about-features {
-    gap: 20px;
-    padding: 0 10px;
-    animation: scrollCards 120s linear infinite; /* Very slow but visible animation */
-  }
-
-  .feature-card {
-    flex: 0 0 280px;
-    padding: 25px 15px;
-  }
-
-  .feature-card h3 {
-    font-size: 1.1rem;
-  }
-
-  .feature-card p {
-    font-size: 0.95rem;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .about-section {
-    padding: 40px 8px;
-  }
-
-  .about-title {
-    font-size: 1.4rem;
-  }
-
-  .about-content {
-    padding: 15px;
-  }
-
-  .about-content p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .about-features {
-    gap: 15px;
-    padding: 0 5px;
-    animation: scrollCards 150s linear infinite; /* Very slow but visible animation */
-  }
-
-  .feature-card {
-    flex: 0 0 260px;
-    padding: 20px 12px;
-  }
-
-  .feature-card h3 {
-    font-size: 1rem;
-  }
-
-  .feature-card p {
-    font-size: 0.9rem;
-  }
-
-  .feature-icon {
-    font-size: 2.2rem;
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .feature-card:hover {
+    transition: none !important;
+    transform: none !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4) !important;
   }
 }

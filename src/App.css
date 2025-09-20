@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Kanit&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Lobster&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
 
 /* Global styles */
 body {
@@ -297,11 +298,8 @@ section, .fullscreen-section, .aboutInfo, .gallery-section, .team-section, .cont
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0 0 20px 20px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    0 2px 8px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 0px 20px;
+  box-shadow:none;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
   position: relative;
@@ -759,3 +757,85 @@ section, .fullscreen-section, .aboutInfo, .gallery-section, .team-section, .cont
 .send-button:hover {
   background-color: #00A844;
 }
+/* ====== Forced iframe visibility (paste at the VERY END of your CSS) ====== */
+
+/* Target the actual iframe explicitly using attribute selector if class missing */
+.contact-section iframe[src*="docs.google.com/forms"],
+.contact-iframe,
+.contact-iframe-wrap iframe,
+.contact-iframe-wrap > iframe,
+iframe.contact-iframe {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  min-height: 640px !important;
+  height: auto !important;
+  max-width: 1200px !important;
+  max-height: none !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 9999 !important; /* bring to front */
+  background: transparent !important;
+}
+
+/* Ensure parent wrappers are visible and not collapsed */
+.contact-form-card,
+.contact-iframe-wrap,
+.contact-iframe-container,
+.contact-form-container,
+.contact-iframe-wrap > div,
+.contact-section .container-fluid {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  z-index: 9998 !important;
+}
+
+/* Remove accidental hiding attributes */
+.contact-section [hidden],
+.contact-section .hidden,
+.contact-section .sr-only {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* If something set pointer-events: none, re-enable interaction */
+.contact-section iframe,
+.contact-section .contact-iframe-wrap {
+  pointer-events: auto !important;
+}
+
+/* Fallback message styling (keeps visible even if iframe blocked) */
+.iframe-fallback {
+  display: block !important;
+  padding: 20px !important;
+  background: rgba(6, 10, 14, 0.6) !important;
+  color: #e6eef2 !important;
+  border-radius: 8px !important;
+  margin-top: 12px !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 1200px !important;
+  box-sizing: border-box !important;
+  z-index: 9999 !important;
+}
+
+/* Prevent any ancestor from clipping the content horizontally */
+html, body, .app-root, #root, .container-fluid {
+  overflow-x: hidden !important;
+}
+
+/* Debug helper (temporary) — adds a soft outline so you can see the iframe container */
+.contact-iframe-wrap.debug,
+.contact-iframe-wrap.debug * {
+  outline: 2px dashed rgba(255, 255, 255, 0.06) !important;
+}
+
+/* end forced overrides */
