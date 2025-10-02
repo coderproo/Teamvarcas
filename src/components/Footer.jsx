@@ -15,7 +15,7 @@ const Footer = () => {
             <div className="social-links">
               <a href="https://www.facebook.com/profile.php?id=61581589406727 " className="social-link"><FaFacebook /></a>
               <a href="https://www.instagram.com/teamvarchas/" className="social-link"><FaInstagram /></a>
-              <a href="https://x.com/TVarcas11" target='blank' className="social-link"><FaTwitter /></a>
+              <a href="https://x.com/Varcas_kjcoemr" target='blank' className="social-link"><FaTwitter /></a>
               <a href="https://www.linkedin.com/company/teamvarcas" className="social-link"><FaLinkedin /></a>
             </div>
           </div>
