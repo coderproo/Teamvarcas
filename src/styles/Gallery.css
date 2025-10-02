@@ -1,0 +1,200 @@
+:root {
+  --bg-dark: #0f172a;
+  --bg-grad: #0b1220;
+  --text-strong: #FCFFF8;
+  --muted: #bfcfd9;
+  --accent: #D2A42A;
+  --card-tint: rgba(255,255,255,0.02);
+  --radius: 14px;
+}
+
+/* strong selector + !important ensures theme is applied */
+html body .gallery-section,
+.gallery-section {
+  background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-grad) 100%) !important;
+  color: var(--muted) !important;
+  padding: 56px 20px !important;
+  box-sizing: border-box !important;
+  min-height: 320px !important;
+  isolation: isolate !important;
+}
+
+/* hide common overlay classes that may be inserted by other scripts */
+html body .gallery-section .overlay,
+html body .gallery-section .white-overlay,
+html body .gallery-section .cover {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ensure gallery's direct children don't get white background accidentally */
+html body .gallery-section > * {
+  background: transparent !important;
+}
+
+/* inner wrapper */
+.gallery-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* preview */
+.gallery-preview-btn {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  outline: none;
+}
+.gallery-preview-btn:focus { outline: 3px solid rgba(210,164,42,0.12); outline-offset: 6px; }
+.gallery-preview-img {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: var(--radius);
+  object-fit: cover;
+  background: var(--card-tint);
+}
+
+/* lightbox overlay forced to top */
+.gallery-lightbox {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483646 !important;
+  background: linear-gradient(180deg, rgba(2,6,23,0.88), rgba(2,6,23,0.96)) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+}
+
+/* rest of styles unaffected */
+.gallery-lightbox-inner {
+  width: min(1100px, 96%);
+  max-height: 94vh;
+  padding: 16px;
+  border-radius: 12px;
+  position: relative;
+  box-sizing: border-box;
+}
+.glb-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.02);
+  border: none;
+  color: var(--muted);
+  font-size: 20px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.glb-stack { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 14px; }
+.glb-layer { position: absolute; width: 62%; max-width: 760px; height: auto; border-radius: 12px; object-fit: cover; filter: blur(4px) brightness(0.86) saturate(0.9); opacity: 0.48; transform-origin: center; box-shadow: 0 30px 90px rgba(0,0,0,0.75); user-drag: none; user-select: none; }
+.glb-back { left: 8%; transform: translate(-40px, -8px) rotate(-6deg) scale(0.96); z-index: 1; }
+.glb-mid  { right: 8%; transform: translate(40px, 8px) rotate(6deg) scale(0.96); z-index: 2; }
+.glb-main-wrap { z-index: 5; display:flex; align-items:center; gap:12px; justify-content:center; }
+.glb-nav { background: rgba(255,255,255,0.02); border: none; color: var(--text-strong); font-size: 20px; padding: 10px; border-radius: 8px; cursor: pointer; user-select: none; }
+.glb-prev { margin-right: 6px; } .glb-next { margin-left: 6px; } .glb-nav:hover { transform: translateY(-3px); }
+.glb-main { width: min(900px,86%); max-height: calc(100vh - 160px); border-radius: 12px; object-fit: contain; box-shadow: 0 40px 120px rgba(0,0,0,0.8); display:block; user-drag:none; user-select:none; }
+button:focus { outline: 3px solid rgba(210,164,42,0.14); outline-offset: 4px; }
+@media (max-width:920px){ .glb-back, .glb-mid { display:none; } .glb-main { width:92%; max-height: calc(100vh - 120px); } .gallery-preview-img { max-width: 680px; } }
+/* Add these blocks to Gallery.css (or replace file with this block included). */
+
+/* ensures gallery background persists if other rules try to override */
+.gallery-section { background: linear-gradient(180deg,#0f172a 0%,#0b1220 100%) !important; }
+
+/* CLICK HINT overlay (centered on top of preview image) */
+.click-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translateY(4px);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  color: var(--text-strong);
+  backdrop-filter: blur(6px);
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1), opacity 260ms ease, filter 260ms ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* visible class toggles show */
+.click-hint.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+  pointer-events: none;
+}
+
+/* when hidden, reduce visibility smoothly */
+.click-hint.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(6px);
+  transition: opacity 420ms ease, transform 420ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* hint icon + text styling */
+.hint-icon {
+  color: var(--accent);
+  opacity: 0.98;
+}
+.hint-text {
+  font-size: 0.95rem;
+  color: var(--text-strong);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* subtle pulse when hint first appears */
+.click-hint.visible { animation: hintPulse 1200ms cubic-bezier(.2,.9,.2,1) 1; }
+@keyframes hintPulse {
+  0%   { transform: translate(-50%,-50%) scale(.985); filter: blur(0px); }
+  50%  { transform: translate(-50%,-50%) scale(1.02); filter: blur(0.2px); }
+  100% { transform: translate(-50%,-50%) scale(1); }
+}
+
+/* Show hint brighter on hover or focus of the preview button (keyboard users get visual cue) */
+.gallery-preview-btn:hover .click-hint,
+.gallery-preview-btn:focus .click-hint {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(-6px);
+  filter: none;
+  pointer-events: none;
+}
+
+/* ensure the preview button is positioned relative so hint can absolutely center */
+.gallery-preview-btn { position: relative; overflow: visible; }
+
+/* Screen-reader only text (hidden visually but readable by assistive tech) */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Keep existing focus outlines visible and friendly */
+button:focus { outline: 3px solid rgba(210,164,42,0.14); outline-offset: 6px; }
+
+/* if your layout added a white overlay element inside gallery, hide it */
+.gallery-section .white-overlay,
+.gallery-section .overlay { display: none !important; visibility: hidden !important; pointer-events: none !important; }

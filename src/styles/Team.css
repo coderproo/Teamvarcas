@@ -1,0 +1,184 @@
+/* ===========================
+   Team section — final override
+   Paste this at the BOTTOM of your main CSS
+   =========================== */
+:root{
+  --team-bg-1: #0f1724;   /* dark blue-black */
+  --team-bg-2: #121827;   /* slightly deeper */
+  --team-text: #dbe7ee;
+  --team-accent: #FFB703;
+  --card-bg: rgba(255,255,255,0.04);
+}
+
+/* Strongly enforce team section background */
+section.team-section,
+.team-section,
+#team-section {
+  background: linear-gradient(180deg, var(--team-bg-1) 0%, var(--team-bg-2) 100%) !important;
+  color: var(--team-text) !important;
+  padding: 90px 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Additional container to constrain content */
+.team-section .team-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Title */
+.team-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 40px;
+  text-align: center !important;   /* force center */
+  width: 100%;                     /* stretch full width */
+  display: block;                  /* avoid inline issues */
+}
+/* Grid layout: centered and larger gaps */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 36px;
+  justify-items: center;    /* centre each card inside its column */
+  align-items: start;
+  margin-bottom: 34px;
+}
+
+/* Bigger card style */
+.team-card {
+  background: var(--card-bg) !important;
+  border-radius: 14px;
+  padding: 26px;
+  text-align: center;
+  width: 100%;
+  max-width: 420px;    /* increased card width */
+  min-height: 420px;   /* taller to match sponsor feel */
+  box-shadow: 0 18px 40px rgba(2,6,10,0.65);
+  transition: transform 320ms cubic-bezier(.2,.9,.2,1), box-shadow 320ms;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* hover matches sponsor look (subtle glow + lift) */
+.team-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 34px 80px rgba(2,6,10,0.75);
+  border: 1px solid rgba(0,200,83,0.04);
+}
+
+/* image wrapper with fixed height for consistent layout */
+.team-image-wrap {
+  width: 100%;
+  height: 240px;           /* larger image */
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* image behaviour */
+.team-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 550ms ease;
+}
+
+/* gentle zoom on hover */
+.team-card:hover .team-image-wrap img {
+  transform: scale(1.04);
+}
+
+/* card content */
+.team-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--team-accent);
+  margin: 6px 0 0;
+}
+
+.team-role {
+  color: rgba(219,231,238,0.92);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* motto under the grid */
+.team-motto {
+  margin-top: 12px;
+  padding-top: 6px;
+}
+
+.team-motto-text {
+  color: rgba(219,231,238,0.9);
+  font-size: clamp(1rem, 1.2vw, 1.05rem);
+  max-width: 920px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Safety rules to prevent other styles from forcing white backgrounds */
+.team-section * {
+  background: transparent !important;
+}
+
+/* Reset any .card or team-member-card that might be defined elsewhere */
+.team-section .card,
+.team-section .team-member-card {
+  background: var(--card-bg) !important;
+  color: var(--team-text) !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 980px) {
+  .team-grid { gap: 26px; grid-template-columns: repeat(auto-fit,minmax(300px,1fr)); }
+  .team-card { max-width: 520px; min-height: 360px; }
+  .team-image-wrap { height: 200px; }
+}
+
+@media (max-width: 520px) {
+  .team-grid { grid-template-columns: 1fr; gap: 20px; }
+  .team-card { max-width: 92%; min-height: auto; padding: 18px; }
+  .team-image-wrap { height: 180px; }
+  .team-title { font-size: 1.6rem; margin-bottom: 28px; }
+  .team-motto-text { font-size: 0.98rem; }
+}
+/* Reduce team image / logo size on small phones */
+@media (max-width: 520px) {
+  /* make the image container shorter to avoid oversized logos */
+  .team-image-wrap {
+    height: 120px !important;        /* smaller container */
+    padding: 6px !important;
+  }
+
+  /* make images fit inside the container without stretching */
+  .team-image-wrap img {
+    width: auto !important;
+    max-width: 60% !important;       /* reduce logo width relative to card */
+    max-height: 100% !important;
+    object-fit: contain !important;  /* prevents cropping, centers logo */
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* In case the logo isn't inside .team-image-wrap but is a direct img in the section */
+  .team-section img.team-logo,
+  .team-section .team-logo img {
+    width: auto !important;
+    max-width: 140px !important;
+    max-height: 64px !important;
+    object-fit: contain !important;
+    display: block;
+    margin: 0 auto;
+  }
+}

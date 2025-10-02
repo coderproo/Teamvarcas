@@ -1,0 +1,59 @@
+/* Join Our Team card */
+.join-card {
+  background: linear-gradient(180deg, rgba(20, 25, 35, 0.95) 0%, rgba(15, 20, 30, 0.95) 100%);
+  border: 1px solid rgba(255, 183, 3, 0.3); /* golden accent like sponsor */
+  border-radius: 14px;
+  padding: 40px 28px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.join-card-title {
+  padding-left: 19px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffb703; /* sponsor gold accent */
+  margin-bottom: 16px;
+}
+
+.join-card-text {
+  color: rgba(219, 231, 238, 0.88);
+  font-size: 1rem;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.join-btn {
+  background: linear-gradient(135deg, #ff9f1c 0%, #ffb703 100%);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 6px 20px rgba(255, 151, 50, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.join-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(255, 151, 50, 0.5);
+}
+
+/* Join Our Team card */
+.join-card {
+  background: #0f1724; /* solid dark navy background */
+  border: 1px solid rgba(255, 183, 3, 0.3); /* golden accent */
+  border-radius: 14px;
+  padding: 40px 28px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  margin-bottom: 60px; /* 👈 space below the card */
+}
+
+/* Ensure section background matches theme */
+.contact-section {
+  background: #0f172a !important;
+  padding: 80px 20px 100px; /* 👈 extra bottom padding for spacing */
+  color: #ffffff;
+}

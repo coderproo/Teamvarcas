@@ -1,0 +1,277 @@
+/* ================= Sponsor Section ================= */
+.sponsor-section {
+  background:  #0f172a;
+  color: #fff;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sponsor-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sponsor-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 50px;
+  color: #f8fafc;
+  animation: fadeDown 1s ease-in-out;
+}
+
+/* ================= Logo Carousel ================= */
+.sponsor-logos-wrapper {
+  overflow: hidden;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.sponsor-logos {
+  display: flex;
+  gap: 40px;
+  animation: scrollLogos 25s linear infinite;
+}
+
+.sponsor-logo-card {
+  flex: 0 0 auto;
+  background: (135deg, #2e3a4d 0%, #242a0f 100%);
+  padding: 0px;  /* more breathing room for bigger logos */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsor-logo-card:hover .sponsor-logo {
+  transform: scale(1.5);
+}
+
+.sponsor-logo {
+  max-width: 250px;    
+  max-height: 220px;  
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.sponsor-logo-card:hover .sponsor-logo {
+  filter: none;  
+}
+
+/* ================= Call to Action ================= */
+.sponsor-cta {
+  margin-top: 60px;
+  padding: 40px;
+  background: #0f192f;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  animation: fadeUp 1.5s ease-in-out;
+}
+
+.sponsor-cta h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #ffb703;
+  font-weight: 700;
+}
+
+.sponsor-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  color: #e2e8f0;
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+  background: linear-gradient(135deg, #d97706, #b45309);
+}
+
+/* ================= Animations ================= */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ================= Responsive ================= */
+@media screen and (max-width: 1024px) {
+  .sponsor-section {
+    padding: 60px 15px;
+  }
+
+  .sponsor-title {
+    font-size: 1.9rem;
+    margin-bottom: 40px;
+  }
+
+  .sponsor-logo-card {
+    padding: 25px;
+  }
+
+  .sponsor-logo {
+    max-width: 200px;
+    max-height: 180px;
+  }
+
+  .sponsor-cta {
+    padding: 35px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sponsor-section {
+    padding: 50px 10px;
+  }
+
+  .sponsor-title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .sponsor-logos {
+    gap: 30px;
+    animation: scrollLogos 120s linear infinite; /* Very slow but visible animation */
+  }
+
+  .sponsor-logo-card {
+    padding: 20px;
+  }
+
+  .sponsor-logo {
+    max-width: 150px;
+    max-height: 120px;
+  }
+
+  .sponsor-cta {
+    padding: 30px 20px;
+    margin-top: 50px;
+  }
+
+  .sponsor-cta h3 {
+    font-size: 1.5rem;
+  }
+
+  .cta-button {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sponsor-section {
+    padding: 40px 8px;
+  }
+
+  .sponsor-title {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+  }
+
+  .sponsor-logos {
+    gap: 20px;
+    animation: scrollLogos 150s linear infinite; /* Very slow but visible animation */
+  }
+
+  .sponsor-logo-card {
+    padding: 15px;
+  }
+
+  .sponsor-logo {
+    max-width: 120px;
+    max-height: 100px;
+  }
+
+  .sponsor-cta {
+    padding: 25px 15px;
+    margin-top: 40px;
+  }
+
+  .sponsor-cta h3 {
+    font-size: 1.3rem;
+  }
+
+  .sponsor-cta p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}
+/* ===== Pause on desktop hover ===== */
+.sponsor-logos:hover {
+  animation-play-state: paused;
+}
+
+/* ===== Mobile / touch-friendly fallback: disable animation & allow swipe =====
+   Use pointer:coarse as a reliable indicator for touch devices. */
+@media (pointer: coarse), (max-width: 768px) {
+  /* Stop the auto-scroll so it doesn't race on mobile */
+  .sponsor-logos {
+    animation: none !important;
+    gap: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Make wrapper scrollable horizontally with native momentum scrolling */
+  .sponsor-logos-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px; /* space so scrollbar doesn't overlap */
+  }
+
+  /* Make each logo snap into place when user swipes */
+  .sponsor-logo-card {
+    scroll-snap-align: center;
+    flex: 0 0 auto;
+    margin: 0 10px;
+    padding: 12px;
+    min-width: 180px; /* tune to show reasonable size on phones */
+    box-sizing: border-box;
+  }
+}
+
+/* ===== Optional: slower animation for medium screens (tablets) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sponsor-logos {
+    animation-duration: 60s; /* slow it down on tablets */
+  }
+}
+
+/* ===== Accessibility: respect reduced-motion preference ===== */
+@media (prefers-reduced-motion: reduce) {
+  .sponsor-logos,
+  .sponsor-logos-wrapper {
+    animation: none !important;
+    scroll-behavior: smooth;
+  }
+}

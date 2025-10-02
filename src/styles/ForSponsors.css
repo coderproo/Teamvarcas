@@ -1,0 +1,124 @@
+:root {
+  --team-bg-dark: #0f1724;
+  --team-bg-dark-2: #121827;
+  --muted: #dbe7ee;
+  --muted-2: rgba(219, 231, 238, 0.85);
+  --accent: #FFB703;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.04);
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Page wrap */
+.forsponsors-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--team-bg-dark) 0%, var(--team-bg-dark-2) 100%);
+  color: var(--muted);
+  padding: 56px 20px;
+  box-sizing: border-box;
+}
+
+/* Heading */
+.forsponsors-hero {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.forsponsors-heading {
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Wrap: now single column */
+.forsponsors-card-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Contact card */
+.forsponsors-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+
+.forsponsors-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.forsponsors-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.forsponsors-item .icon {
+  font-size: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.forsponsors-item .text {
+  color: var(--muted-2);
+  line-height: 1.45;
+}
+.forsponsors-item .text strong {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+/* Location section */
+.contact-location {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.contact-subtitle {
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.map-container {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.map-container iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+}
+
+.location-details {
+  font-size: 0.95rem;
+  color: var(--muted-2);
+}
+.location-details strong {
+  color: #fff;
+}
+.location-details a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.location-details a:hover {
+  text-decoration: underline;
+}
+    

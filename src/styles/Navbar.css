@@ -1,0 +1,512 @@
+
+.scrolled {
+  background-color: #1E2120;
+  color: #fff;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: background-color 1.2s, color 0.3s;
+  z-index: 1000;
+}
+
+.navbar {
+  background: #000 !important; /* solid black */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.5rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Navbar Brand with only KJEI */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: #fff !important;
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding-left: 25px; 
+}
+
+/* KJEI container */
+.kjei-container {
+  display: flex;
+  align-items: center;
+}
+
+/* KJEI logo */
+.kjei-logo {
+  height: px; 
+  width: auto;
+  margin-right: 8px;
+}
+
+/* KJEI text */
+.kjei-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FFB703; /* golden */
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Nav Links */
+.nav-link {
+  position: relative;
+  color: #fff !important; /* white */
+  padding: 8px 14px !important;
+  border-radius: 0 !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.nav-link:hover {
+  color: #E63946 !important; /* sporty red */
+}
+
+/* Active link */
+.active-link {
+  color: #FFB703 !important; /* gold */
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #FFB703; /* underline */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.6rem;
+  }
+
+  .nav-link {
+    color: #FFD700 !important;
+    padding: 12px 20px !important;
+    margin: 2px 0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: rgba(0,200,83,0.1);
+    color: #00C853 !important;
+  }
+
+  .active-link {
+    background: rgba(0,200,83,0.15);
+    border: 1px solid rgba(0,200,83,0.4);
+    color: #00C853 !important;
+  }
+
+  /* Smaller KJEI on mobile */
+  .kjei-logo {
+    height: 42px;
+  }
+
+  .kjei-text {
+    font-size: 1.2rem;
+  }
+
+
+  /* Toggler (hamburger) button */
+  .navbar-toggler {
+    color: #fff !important;
+    border-color: rgba(255,255,255,0.18) !important;
+    background: transparent !important;
+  }
+
+  /* Toggler icon (Bootstrap often uses background-image SVG) - invert to white */
+  .navbar-toggler .navbar-toggler-icon {
+    filter: invert(1) brightness(3) !important;
+    opacity: 0.96 !important;
+    /* If your toggler uses an SVG inline, this will also help */
+  }
+
+  /* When collapse is shown, give it a dark backdrop so white links contrast */
+  .navbar-collapse,
+  .navbar-collapse.show,
+  .navbar-collapse.collapse.show {
+    background: linear-gradient(180deg, rgba(10,12,14,0.98), rgba(6,8,10,0.98)) !important;
+    padding: 12px 12px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6) !important;
+    margin-top: 8px !important;
+  }
+
+  /* Force nav items inside the collapsed menu to be white and full-width */
+  .navbar-collapse .nav-link,
+  .navbar-collapse .nav-item > a,
+  .navbar-collapse .dropdown-item {
+    color: #fff !important;
+    background: transparent !important;
+    padding: 10px 12px !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  /* Hover and active states inside mobile menu */
+  .navbar-collapse .nav-link:hover,
+  .navbar-collapse .dropdown-item:hover {
+    color: #FFB703 !important; /* gold on hover for clarity */
+    background: rgba(255,255,255,0.03) !important;
+  }
+
+  .navbar-collapse .active-link {
+    color: #FFB703 !important;
+    background: rgba(255,183,3,0.06) !important;
+  }
+
+  /* Dropdown menus (if used inside navbar) */
+  .navbar .dropdown-menu {
+    background: rgba(8,10,12,0.98) !important;
+    border: 1px solid rgba(255,255,255,0.04) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
+    padding: 6px 0 !important;
+  }
+  .navbar .dropdown-menu .dropdown-item {
+    color: #fff !important;
+  }
+  .navbar .dropdown-menu .dropdown-item:hover {
+    background: rgba(255,255,255,0.03) !important;
+    color: #FFB703 !important;
+  }
+
+  /* If you use .show on menu container ensure it remains above other content */
+  .navbar-collapse.show {
+    z-index: 1100 !important;
+  }
+
+  /* If your mobile menu places links as list items inside a .menu or .mobile-menu container,
+     also target them to be white */
+  .mobile-menu a,
+  .menu-mobile a,
+  .menu-mobile .nav-link {
+    color: #fff !important;
+  }
+
+  /* For ARIA / focus: keep focus outlines visible on mobile */
+  .navbar-collapse .nav-link:focus,
+  .navbar-collapse .dropdown-item:focus,
+  .navbar-toggler:focus {
+    outline: 3px solid rgba(255,183,3,0.12) !important;
+    outline-offset: 3px !important;
+  }
+
+  /* Reduce logo sizes for tighter mobile header to avoid pushing menu out */
+  .logo-link img {
+    height: 70px;   /* increased from 42px */
+  }
+  .navbar-logos {
+    gap: 14px;
+  }
+}
+
+/* Logo container */
+.navbar-logos {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* separation between the two logos */
+  padding-left: 25px;
+}
+
+/* Common logo styling */
+.logo-link img {
+  height:  85px;   /* increased from 55px */
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effects separately */
+.kjei-link img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.7)); /* golden glow */
+}
+
+.team-link img:hover {
+  transform:  scale(1.05);
+  filter: drop-shadow(0 0 5px rgba(0, 200, 83, 0.6)); /* green sporty glow */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .logo-link img {
+    height: 70px;   /* increased from 42px */
+  }
+  .navbar-logos {
+    gap: 14px;
+  }
+}
+
+.scrolled {
+  background-color: #1E2120;
+  color: #fff;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: background-color 1.2s, color 0.3s;
+  z-index: 1000;
+}
+
+.navbar {
+  background: #000 !important; /* solid black */
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.5rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Navbar Brand with only KJEI */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: #fff !important;
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding-left: 25px; 
+}
+
+/* KJEI container */
+.kjei-container {
+  display: flex;
+  align-items: center;
+}
+
+/* KJEI logo */
+.kjei-logo {
+  height: px; 
+  width: auto;
+  margin-right: 8px;
+}
+
+/* KJEI text */
+.kjei-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FFB703; /* golden */
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Nav Links */
+.nav-link {
+  position: relative;
+  color: #fff !important; /* white */
+  padding: 8px 14px !important;
+  border-radius: 0 !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.nav-link:hover {
+  color: #E63946 !important; /* sporty red */
+}
+
+/* Active link */
+.active-link {
+  color: #FFB703 !important; /* gold */
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #FFB703; /* underline */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.6rem;
+  }
+
+  .nav-link {
+    color: #FFD700 !important;
+    padding: 12px 20px !important;
+    margin: 2px 0;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: rgba(0,200,83,0.1);
+    color: #00C853 !important;
+  }
+
+  .active-link {
+    background: rgba(0,200,83,0.15);
+    border: 1px solid rgba(0,200,83,0.4);
+    color: #00C853 !important;
+  }
+
+  /* Smaller KJEI on mobile */
+  .kjei-logo {
+    height: 42px;
+  }
+
+  .kjei-text {
+    font-size: 1.2rem;
+  }
+
+
+  /* Toggler (hamburger) button */
+  .navbar-toggler {
+    color: #fff !important;
+    border-color: rgba(255,255,255,0.18) !important;
+    background: transparent !important;
+  }
+
+  /* Toggler icon (Bootstrap often uses background-image SVG) - invert to white */
+  .navbar-toggler .navbar-toggler-icon {
+    filter: invert(1) brightness(3) !important;
+    opacity: 0.96 !important;
+    /* If your toggler uses an SVG inline, this will also help */
+  }
+
+  /* When collapse is shown, give it a dark backdrop so white links contrast */
+  .navbar-collapse,
+  .navbar-collapse.show,
+  .navbar-collapse.collapse.show {
+    background: linear-gradient(180deg, rgba(10,12,14,0.98), rgba(6,8,10,0.98)) !important;
+    padding: 12px 12px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6) !important;
+    margin-top: 8px !important;
+  }
+
+  /* Force nav items inside the collapsed menu to be white and full-width */
+  .navbar-collapse .nav-link,
+  .navbar-collapse .nav-item > a,
+  .navbar-collapse .dropdown-item {
+    color: #fff !important;
+    background: transparent !important;
+    padding: 10px 12px !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  /* Hover and active states inside mobile menu */
+  .navbar-collapse .nav-link:hover,
+  .navbar-collapse .dropdown-item:hover {
+    color: #FFB703 !important; /* gold on hover for clarity */
+    background: rgba(255,255,255,0.03) !important;
+  }
+
+  .navbar-collapse .active-link {
+    color: #FFB703 !important;
+    background: rgba(255,183,3,0.06) !important;
+  }
+
+  /* Dropdown menus (if used inside navbar) */
+  .navbar .dropdown-menu {
+    background: rgba(8,10,12,0.98) !important;
+    border: 1px solid rgba(255,255,255,0.04) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6) !important;
+    padding: 6px 0 !important;
+  }
+  .navbar .dropdown-menu .dropdown-item {
+    color: #fff !important;
+  }
+  .navbar .dropdown-menu .dropdown-item:hover {
+    background: rgba(255,255,255,0.03) !important;
+    color: #FFB703 !important;
+  }
+
+  /* If you use .show on menu container ensure it remains above other content */
+  .navbar-collapse.show {
+    z-index: 1100 !important;
+  }
+
+  /* If your mobile menu places links as list items inside a .menu or .mobile-menu container,
+     also target them to be white */
+  .mobile-menu a,
+  .menu-mobile a,
+  .menu-mobile .nav-link {
+    color: #fff !important;
+  }
+
+  /* For ARIA / focus: keep focus outlines visible on mobile */
+  .navbar-collapse .nav-link:focus,
+  .navbar-collapse .dropdown-item:focus,
+  .navbar-toggler:focus {
+    outline: 3px solid rgba(255,183,3,0.12) !important;
+    outline-offset: 3px !important;
+  }
+
+  /* Reduce logo sizes for tighter mobile header to avoid pushing menu out */
+  .logo-link img {
+    height: 70px;   /* increased from 42px */
+  }
+  .navbar-logos {
+    gap: 14px;
+  }
+}
+
+/* Logo container */
+.navbar-logos {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* separation between the two logos */
+  padding-left: 25px;
+}
+
+/* Common logo styling */
+.logo-link img {
+  height:  85px;   /* increased from 55px */
+  width: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover effects separately */
+.kjei-link img:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.7)); /* golden glow */
+}
+
+.team-link img:hover {
+  transform:  scale(1.05);
+  filter: drop-shadow(0 0 5px rgba(0, 200, 83, 0.6)); /* green sporty glow */
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .logo-link img {
+    height: 70px;   /* increased from 42px */
+  }
+  .navbar-logos {
+    gap: 14px;
+  }
+}
